@@ -87,6 +87,7 @@ class DashboardController < ActionController::Base
       IS_ENTERPRISE: ChatwootApp.enterprise?,
       IS_COMPANY_ENRICHMENT_ENABLED: ChatwootApp.enterprise? && GlobalConfigService.load('CONTEXT_DEV_API_KEY', nil).present?,
       AZURE_APP_ID: GlobalConfigService.load('AZURE_APP_ID', ''),
+      ISPGO_CLOUD_URL: ENV.fetch('ISPGO_CLOUD_URL', ''),
       GIT_SHA: GIT_HASH,
       ALLOWED_LOGIN_METHODS: allowed_login_methods,
       ACTIVE_PLATFORM_BANNERS: active_platform_banners,
