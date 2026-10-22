@@ -1,12 +1,14 @@
 # Imagen de IspGo CRM: Chatwoot edición comunitaria (sin la carpeta
 # enterprise) con la marca de IspGo, publicada en ghcr.io/yeiider/ispgo-crm.
-# En un PR solo se construye para probar; al hacer merge a develop se publica.
+# develop publica :latest; las ramas de trabajo publican :edge para probar
+# antes del merge. En un PR solo se construye.
 name: IspGo CRM image
 
 on:
   push:
     branches:
       - develop
+      - 'claude/**'
     tags:
       - ispgo-v*
   pull_request:
@@ -45,6 +47,7 @@ jobs:
           images: ${{ env.IMAGE }}
           tags: |
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/develop' }}
+            type=raw,value=edge,enable=${{ startsWith(github.ref, 'refs/heads/claude/') }}
             type=sha,prefix=
             type=ref,event=tag
 
