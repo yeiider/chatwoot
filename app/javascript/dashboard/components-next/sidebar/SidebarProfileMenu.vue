@@ -60,6 +60,15 @@ const menuItems = computed(() => {
       click: toggleChatSupport,
     },
     {
+      show: !!globalConfig.value.ispgoCloudUrl,
+      showOnCustomBrandedInstance: true,
+      label: t('SIDEBAR_ITEMS.ISPGO_CLOUD'),
+      icon: 'i-lucide-layout-grid',
+      link: globalConfig.value.ispgoCloudUrl,
+      nativeLink: true,
+      target: '_blank',
+    },
+    {
       show: true,
       showOnCustomBrandedInstance: true,
       label: t('SIDEBAR_ITEMS.KEYBOARD_SHORTCUTS'),
